@@ -3,7 +3,7 @@ import { supabase } from "../lib/supabase";
 import "./storefront.css";
 
 // ---- Edit these ----
-const WHATSAPP = "260000000000"; // your number, country code first, no + or spaces
+const WHATSAPP = "260964687209"; // your number, country code first, no + or spaces
 const CURRENCY = "K";
 const CATEGORIES = ["Dresses", "Tops", "Jeans", "Outerwear", "Bags", "Shoes", "Accessories"];
 // --------------------
