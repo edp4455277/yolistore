@@ -1,11 +1,13 @@
-import { MessageCircle, ShoppingBag } from 'lucide-react';
+import { MessageCircle, Moon, ShoppingBag, Sun } from 'lucide-react';
 
 interface NavbarProps {
   cartCount: number;
+  isDarkMode: boolean;
   onOpenCart: () => void;
+  onToggleTheme: () => void;
 }
 
-export function Navbar({ cartCount, onOpenCart }: NavbarProps) {
+export function Navbar({ cartCount, isDarkMode, onOpenCart, onToggleTheme }: NavbarProps) {
   return (
     <header className="site-header">
       <a aria-label="Yolique Boutique home" className="brand" href="#top">
@@ -23,6 +25,15 @@ export function Navbar({ cartCount, onOpenCart }: NavbarProps) {
           <MessageCircle aria-hidden="true" size={15} strokeWidth={1.7} />
           <span>Contact us</span>
         </a>
+        <button
+          aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
+          className="theme-toggle"
+          onClick={onToggleTheme}
+          title={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
+          type="button"
+        >
+          {isDarkMode ? <Sun aria-hidden="true" size={17} /> : <Moon aria-hidden="true" size={17} />}
+        </button>
         <button aria-label={`Open shopping bag, ${cartCount} items`} className="bag-button" onClick={onOpenCart} type="button">
           <ShoppingBag aria-hidden="true" size={17} strokeWidth={1.6} />
           <span>Bag</span>
