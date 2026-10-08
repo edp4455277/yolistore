@@ -5,7 +5,7 @@ import { placeOrder, isNewArrival } from "../lib/orders";
 import "./storefront.css";
 
 // ---- Edit these ----
-const WHATSAPP = "260000000000"; // your number, country code first, no + or spaces
+const WHATSAPP = "260771699256"; // your number, country code first, no + or spaces
 const CURRENCY = "K";
 
 // Shown in the "Good to know" section. Leave a text as "" to hide that line.
