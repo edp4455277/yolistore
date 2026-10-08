@@ -75,6 +75,10 @@
 .yb-info small { color: var(--muted); font-size: .8rem; }
 .yb-info h3 { margin: 4px 0 12px; font-size: 1rem; font-weight: 500; line-height: 1.3;
   display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.yb-size-badge { display: inline-flex; width: fit-content; align-items: center; padding: 5px 9px; border: 1px solid var(--line);
+  border-radius: 999px; color: var(--muted); font-size: .75rem; }
+.yb-card-sizes { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+.yb-card-sizes .yb-chip { min-width: 34px; padding: 5px 9px; font-size: .72rem; }
 .yb-buy { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
 .yb-price strong { color: var(--gold); font-size: 1.1rem; display: block; }
 .yb-price s { color: var(--muted); font-size: .8rem; }
@@ -120,6 +124,7 @@
 .yb-desc { color: var(--muted); line-height: 1.55; }
 .yb-opt p { margin: 0 0 10px; font-weight: 500; }
 .yb-opt.need p { color: #ef7b7b; }
+.yb-opt .yb-size-badge { padding: 8px 12px; }
 .yb-chips { display: flex; flex-wrap: wrap; gap: 10px; }
 .yb-chip { min-width: 48px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--line) !important; background: var(--card); }
 .yb-chip.on { background: var(--gold); border-color: var(--gold) !important; color: #141108; font-weight: 600; }
@@ -166,3 +171,41 @@
   background: var(--gold); color: #141108 !important; font-weight: 600; box-shadow: 0 8px 24px rgba(0, 0, 0, .5); }
 @media (min-width: 900px) { .yb-bar { left: 50%; right: auto; width: 380px; transform: translateX(-50%); bottom: 24px; } }
 .yb-toast { bottom: calc(140px + env(safe-area-inset-bottom, 0px)); }
+
+/* colour swatches, sizes, sold */
+.yb-sw { width: 38px; height: 38px; border-radius: 50%; border: 2px solid var(--line) !important; }
+.yb-sw.on { outline: 2px solid var(--gold); outline-offset: 3px; }
+.yb-size { min-width: 52px; border-radius: 10px; }
+.yb-sold { position: absolute; top: 6px; left: 6px; padding: 2px 8px; border-radius: 999px; background: #111; color: var(--text);
+  font-style: normal; font-size: .68rem; font-weight: 600; border: 1px solid var(--gold); }
+.is-sold .yb-img img { opacity: .45; }
+.yb .yb-gold:disabled { opacity: .45; cursor: not-allowed; }
+
+/* Append to the bottom of storefront.css */
+
+/* "Just dropped" badge, bottom-left of the card photo */
+.yb-new {
+  position: absolute; left: 8px; bottom: 8px;
+  background: #c9a24b; color: #17120a;
+  font-style: normal; font-size: .7rem; font-weight: 700;
+  padding: 3px 9px; border-radius: 999px;
+}
+
+/* condition + measurements in the product sheet */
+.yb-meta { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: .9rem; }
+.yb-meta li { display: flex; gap: 10px; }
+.yb-meta span { color: #9a9484; min-width: 110px; }
+.yb-one { margin: 0; font-size: .85rem; color: #c9a24b; }
+
+/* checkout feedback in the bag */
+button.yb-wa { width: 100%; border: 0; cursor: pointer; font: inherit; }
+button.yb-wa:disabled { opacity: .6; cursor: wait; }
+.yb-err { margin: 8px 0 0; font-size: .85rem; color: #e0645c; }
+.yb-ok { display: flex; flex-direction: column; gap: 12px; padding: 8px 0; }
+.yb-ok p { margin: 0; }
+
+/* Good to know */
+.yb-info { padding: 28px 16px 120px; display: flex; flex-direction: column; gap: 14px; max-width: 760px; margin: 0 auto; }
+.yb-info h2 { margin: 0; }
+.yb-info h3 { margin: 0 0 4px; font-size: .95rem; }
+.yb-info p { margin: 0; opacity: .8; line-height: 1.5; }

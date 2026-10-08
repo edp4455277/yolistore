@@ -1,15 +1,56 @@
 import { createClient } from '@supabase/supabase-js';
-import type { Product } from '../types/product';
 
-type ProductRow = Pick<Product, keyof Product>;
+export type ProductRow = {
+  id: string;
+  created_at: string;
+  title: string;
+  description: string | null;
+  category: string | null;
+  price_zmw: number;
+  original_price_zmw: number | null;
+  sizes: string[];
+  colors: string[];
+  sold: boolean;
+  image_url: string | null;
+  images: string | null;
+};
 
 interface Database {
   public: {
     Tables: {
       products: {
         Row: ProductRow;
-        Insert: Partial<ProductRow>;
-        Update: Partial<ProductRow>;
+        Insert: Omit<ProductRow, 'id' | 'created_at'> & {
+          id?: string;
+          created_at?: string;
+        };
+        Update: Partial<Omit<ProductRow, 'id' | 'created_at'>>;
+        Relationships: [];
+      };
+      orders_log: {
+        Row: {
+          id: number;
+          product_id: string;
+          product_title: string;
+          selected_size: string | null;
+          price_zmw: number;
+          created_at: string;
+        };
+        Insert: {
+          id?: number;
+          product_id: string;
+          product_title: string;
+          selected_size: string | null;
+          price_zmw: number;
+          created_at?: string;
+        };
+        Update: Partial<{
+          product_id: string;
+          product_title: string;
+          selected_size: string | null;
+          price_zmw: number;
+          created_at: string;
+        }>;
         Relationships: [];
       };
     };

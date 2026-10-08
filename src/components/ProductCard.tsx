@@ -1,7 +1,7 @@
 import { ArrowUpRight, MessageCircle, Plus } from 'lucide-react';
 import { useState } from 'react';
 import type { Product } from '../types/product';
-import { getProductWhatsAppUrl } from '../lib/whatsapp';
+import { getProductWhatsAppUrl, logOrderIntent } from '../lib/whatsapp';
 
 interface ProductCardProps {
   product: Product;
@@ -11,6 +11,16 @@ interface ProductCardProps {
 export function ProductCard({ product, onAddToBag }: ProductCardProps) {
   const [imageFailed, setImageFailed] = useState(false);
   const hasImage = Boolean(product.image_url) && !imageFailed;
+  const handleOrderClick = () => {
+    void logOrderIntent({
+      productId: product.id,
+      productTitle: product.title,
+      selectedSize: null,
+      priceZmw: product.price_zmw,
+    }).catch((error: unknown) => {
+      console.error('Unable to record WhatsApp order intent.', error);
+    });
+  };
 
   return (
     <article className="product-card">
@@ -47,7 +57,7 @@ export function ProductCard({ product, onAddToBag }: ProductCardProps) {
           <p className="product-price">K{product.price_zmw}</p>
         </div>
         {product.description && <p className="product-description">{product.description}</p>}
-        <a className="product-order" href={getProductWhatsAppUrl(product)} rel="noreferrer" target="_blank">
+        <a className="product-order" href={getProductWhatsAppUrl(product)} onClick={handleOrderClick} rel="noreferrer" target="_blank">
           <MessageCircle aria-hidden="true" size={15} strokeWidth={1.7} />
           <span>Order on WhatsApp</span>
           <ArrowUpRight aria-hidden="true" className="order-arrow" size={15} strokeWidth={1.6} />
