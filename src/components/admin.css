@@ -191,3 +191,89 @@
 .ad-badge.cancelled { color: var(--danger); border-color: var(--danger); }
 
 .ad-line-opts { color: var(--muted); }
+
+/* ---------- Clear boxes for every field (added) ---------- */
+.ad .ad-box label { color: var(--text); font-size: .9rem; font-weight: 500; }
+.ad .ad-box input:not([type="checkbox"]):not([type="file"]),
+.ad .ad-box select,
+.ad .ad-box textarea,
+.ad .ad-top ~ .ad-box input:not([type="checkbox"]):not([type="file"]) {
+  width: 100%;
+  font: inherit;
+  color: var(--text);
+  background: #0c0c0c;
+  border: 1.5px solid #5a5446;
+  border-radius: 10px;
+  padding: 12px 14px;
+  min-height: 48px;
+}
+.ad .ad-box input:not([type="checkbox"]):not([type="file"]):focus,
+.ad .ad-box select:focus,
+.ad .ad-box textarea:focus {
+  border-color: var(--gold);
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.25);
+}
+.ad .ad-box input::placeholder { color: #6f695b; }
+.ad .ad-box input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
+
+/* photo picker looks like a drop box */
+.ad .ad-box input[type="file"] {
+  width: 100%;
+  padding: 20px 14px;
+  border: 2px dashed #5a5446;
+  border-radius: 12px;
+  background: #0c0c0c;
+  color: var(--muted);
+  font: inherit;
+  cursor: pointer;
+}
+.ad .ad-box input[type="file"]::file-selector-button {
+  margin-right: 14px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--gold);
+  color: var(--gold-ink);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ---------- Size and colour chips: selected is unmistakable ---------- */
+.ad .ad-chips .ad-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1.5px solid #5a5446;
+  border-radius: 999px;
+  background: #0c0c0c;
+  color: var(--text);
+}
+.ad .ad-chips .ad-chip.on {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--gold-ink);
+  font-weight: 700;
+  box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.3);
+}
+.ad .ad-chips .ad-chip.on::before { content: "\2713"; font-weight: 800; }
+.ad .ad-chips .ad-chip i {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  flex: none;
+}
+.ad .ad-chips .ad-chip.on i { border-color: rgba(0, 0, 0, 0.5); }
+
+/* "Selected: M, L" line under each group */
+.ad-picked { margin: -4px 0 0; font-size: .85rem; color: var(--muted); }
+.ad-picked.has { color: var(--gold); font-weight: 600; }
+
+.ad-info small { display: block; }
+.ad-msg.ok { color: var(--ok); font-weight: 600; }
+.ad-msg.error { color: var(--danger); }
